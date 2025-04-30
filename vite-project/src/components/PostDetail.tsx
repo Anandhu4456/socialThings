@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../supabase-client";
 import { Post } from "./PostList";
+import { LikeButton} from "../components/LikeButton"
 
 interface Props {
     postId: number;
@@ -37,6 +38,8 @@ if (error) {
             )}
             <p className="text-gray-400"> {data?.content} </p>
             <p className="text-gray-500 text-sm"> Posted on: {new Date(data!.created_at).toLocaleDateString()}</p>
+
+            <LikeButton postId={postId}/>
         </div>
     )
 }
